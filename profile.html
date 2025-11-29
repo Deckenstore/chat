@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>My Profile</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+  <div class="profile-container">
+    <h2>My Profile</h2>
+
+    <div id="profile-info">
+      <img id="profilePhoto" class="profile-avatar" src="https://via.placeholder.com/100" alt="Profile Photo">
+    </div>
+
+    <form id="profileForm">
+      <input type="text" id="profileName" placeholder="Name" />
+      <textarea id="profileDesc" placeholder="Description" rows="3"></textarea>
+      <input type="url" id="profilePhotoUrl" placeholder="Photo URL" />
+
+      <button type="submit">Update Profile</button>
+    </form>
+
+    <button onclick="window.location.href='home.html'">Back</button>
+  </div>
+
+ <!-- Firebase MUST load first -->
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+  <script src="assets/js/firebase-config.js"></script>
+  <script src="assets/js/profile.js"></script>
+</body>
+</html>

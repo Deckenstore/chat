@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Chat</title>
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+
+<body>
+
+  <div class="chat-header">
+    <button onclick="goBack()">←</button>
+    <img id="userPhoto" class="user-photo">
+    <div>
+      <h3 id="userName"></h3>
+      <p id="userStatus"></p>
+      <p id="typingIndicator"></p>
+    </div>
+    <button onclick="startCall()">📞</button>
+  </div>
+
+  <div id="messages"></div>
+
+  <div class="chat-input-box">
+    <input type="text" id="msgInput" placeholder="Type a message..." />
+    <button onclick="sendMessage()">Send</button>
+  </div>
+ <!-- Firebase MUST load first -->
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+  <script src="assets/js/firebase-config.js"></script>
+  <script src="assets/js/chat.js"></script>
+</body>
+</html>

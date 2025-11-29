@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Chat App - Login</title>
+  <link rel="stylesheet" href="assets/css/style.css" />
+</head>
+
+<body>
+  <div class="auth-container">
+
+    <div class="auth-box" id="login-box">
+      <h2>Login</h2>
+
+      <input type="email" id="login-email" placeholder="Email" />
+      <input type="password" id="login-pass" placeholder="Password" />
+
+      <button onclick="loginUser()">Login</button>
+
+      <p onclick="showRegister()">Create account</p>
+    </div>
+
+    <div class="auth-box hidden" id="register-box">
+      <h2>Register</h2>
+
+      <input type="text" id="reg-name" placeholder="Full Name" />
+      <input type="email" id="reg-email" placeholder="Email" />
+      <input type="password" id="reg-pass" placeholder="Password" />
+
+      <button onclick="registerUser()">Register</button>
+
+      <p onclick="showLogin()">Already have an account?</p>
+    </div>
+
+  </div>
+
+ <!-- Firebase MUST load first -->
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-app-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-auth-compat.js"></script>
+<script src="https://www.gstatic.com/firebasejs/9.22.0/firebase-database-compat.js"></script>
+<!-- Your scripts -->
+<script src="assets/js/firebase-config.js"></script>
+<script src="assets/js/auth.js"></script>
+</body>
+</html>
