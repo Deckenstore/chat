@@ -8,6 +8,7 @@ if (window.location.pathname.endsWith('index.html')) {
             window.location.href = "home.html";
         }
     });
+}
 // Show Register form
 function showRegister() {
     document.getElementById("login-box").classList.add("hidden");
@@ -22,6 +23,7 @@ function showLogin() {
 
 // Register User
 function registerUser() {
+    console.log("Register function called");
     const name = document.getElementById("reg-name").value.trim();
     const email = document.getElementById("reg-email").value.trim();
     const password = document.getElementById("reg-pass").value;
@@ -30,22 +32,30 @@ function registerUser() {
 
     auth.createUserWithEmailAndPassword(email, password)
         .then((cred) => {
+            console.log("User created:", cred.user.uid);
             const uid = cred.user.uid;
             // Save user info in Realtime DB
-            db.ref("users/" + uid).set({
+            return db.ref("users/" + uid).set({
                 name: name,
                 email: email,
                 online: true,
                 lastSeen: firebase.database.ServerValue.TIMESTAMP,
             });
-            // Redirect to home
+        })
+        .then(() => {
+            console.log("DB saved, redirecting");
+            // Redirect to home after successful db save
             window.location.href = "home.html";
         })
-        .catch((err) => alert(err.message));
+        .catch((err) => {
+            console.error("Error:", err);
+            alert(err.message);
+        });
 }
 
 // Login User
 function loginUser() {
+    console.log("Login function called");
     const email = document.getElementById("login-email").value.trim();
     const password = document.getElementById("login-pass").value;
 
@@ -53,6 +63,7 @@ function loginUser() {
 
     auth.signInWithEmailAndPassword(email, password)
         .then((cred) => {
+            console.log("User logged in:", cred.user.uid);
             const uid = cred.user.uid;
             db.ref("users/" + uid).update({
                 online: true,
@@ -60,7 +71,10 @@ function loginUser() {
             });
             window.location.href = "home.html";
         })
-        .catch((err) => alert(err.message));
+        .catch((err) => {
+            console.error("Login error:", err);
+            alert(err.message);
+        });
 }
 
 // Logout User
